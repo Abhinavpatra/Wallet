@@ -1,23 +1,28 @@
 "use client";
 
 import { generateMnemonic } from "bip39";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GenerateWallet } from "../components/GenerateWallet";
 import toast, { Toaster } from 'react-hot-toast';
 import { handleCopy } from "../components/HandleCopy";
 
-
 export default function Home() {
   const [mnemonic, setMnemonic] = useState("");
 
-  // Function to handle copying the mnemonic to the clipboard
- 
+  useEffect(() => {
+    // Check for stored mnemonic in local storage
+    const storedData = JSON.parse(localStorage.getItem('walletData') || '{}');
+    if (storedData.mnemonic) {
+      setMnemonic(storedData.mnemonic);
+    }
+  }, []);
 
-  // Function to handle generating a new mnemonic
   const handleGenerateMnemonic = () => {
     const newMnemonic = generateMnemonic();
     setMnemonic(newMnemonic);
     toast.success("New seed phrase generated!");
+    // Save the new mnemonic to local storage
+    localStorage.setItem('walletData', JSON.stringify({ mnemonic: newMnemonic, index: 0 }));
   };
 
   return (
@@ -39,11 +44,11 @@ export default function Home() {
             The seed phrase is: {mnemonic}
           </div>
           <button
-  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-  onClick={() => handleCopy(mnemonic)} // Wrapped in an arrow function
->
-  Copy Seed Phrase
-</button>
+            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+            onClick={() => handleCopy(mnemonic)}
+          >
+            Copy Seed Phrase
+          </button>
         </div>
       )}
 
