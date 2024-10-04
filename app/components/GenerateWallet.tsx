@@ -4,7 +4,7 @@ import { mnemonicToSeedSync } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js"; // Import Keypair from Solana Web3.js
 import { useState,useEffect } from "react";
-import { handleCopy } from "../solana/page";
+import { handleCopy } from '../components/HandleCopy';
 
 
 export function GenerateWallet({ mnemonic }: { mnemonic: string }) {
