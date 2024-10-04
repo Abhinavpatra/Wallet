@@ -4,7 +4,6 @@ import { mnemonicToSeedSync } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js"; // Import Keypair from Solana Web3.js
 import { useState,useEffect } from "react";
-import * as bip32 from 'bip32';
 import { handleCopy } from "../solana/page";
 
 
