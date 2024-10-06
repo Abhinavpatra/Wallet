@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { X } from "lucide-react";
+import { Copy, X, Eye, EyeOff } from "lucide-react";
 import { handleCopy } from "../scripts/HandleCopy";
 
 interface WalletCardProps {
@@ -11,6 +11,9 @@ interface WalletCardProps {
 
 export default function WalletCard({ index, publicKey, privateKey }: WalletCardProps) {
   const [open, setOpen] = useState(false);
+  const [showPrivateKey, setShowPrivateKey] = useState(false);
+
+  const togglePrivateKey = () => setShowPrivateKey(!showPrivateKey);
 
   return (
     <div>
@@ -42,7 +45,13 @@ export default function WalletCard({ index, publicKey, privateKey }: WalletCardP
               </div>
               <div className="space-y-6">
                 <KeyDisplay label="Public Key" value={publicKey} />
-                <KeyDisplay label="Private Key" value={privateKey} />
+                <KeyDisplay 
+                  label="Private Key" 
+                  value={privateKey} 
+                  isPrivate={true} 
+                  showPrivateKey={showPrivateKey} 
+                  togglePrivateKey={togglePrivateKey} 
+                />
               </div>
             </DialogPanel>
           </div>
@@ -52,19 +61,40 @@ export default function WalletCard({ index, publicKey, privateKey }: WalletCardP
   );
 }
 
-function KeyDisplay({ label, value }: { label: string; value: string }) {
+interface KeyDisplayProps {
+  label: string;
+  value: string;
+  isPrivate?: boolean;
+  showPrivateKey?: boolean;
+  togglePrivateKey?: () => void;
+}
+
+function KeyDisplay({ label, value, isPrivate = false, showPrivateKey = false, togglePrivateKey }: KeyDisplayProps) {
   return (
     <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-inner">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium text-gray-500 dark:text-gray-300">{label}</span>
-        <button
-          onClick={() => handleCopy(value)}
-          className="flex items-center space-x-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md px-3 py-1 text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-200"
-        >
-          <span>Copy</span>
-        </button>
+        <div className="flex items-center space-x-2">
+          {isPrivate && (
+            <button
+              onClick={togglePrivateKey}
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              {showPrivateKey ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          )}
+          <button
+            onClick={() => handleCopy(value)}
+            className="flex items-center space-x-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md px-3 py-1 text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-200"
+          >
+            <Copy size={16} />
+            <span>Copy</span>
+          </button>
+        </div>
       </div>
-      <p className="text-sm text-gray-700 dark:text-gray-200 break-all bg-white dark:bg-gray-600 p-3 rounded-md shadow-sm">{value}</p>
+      <p className="text-sm text-gray-700 dark:text-gray-200 break-all bg-white dark:bg-gray-600 p-3 rounded-md shadow-sm">
+        {isPrivate && !showPrivateKey ? "••••••••••••••••••••••••••••••••" : value}
+      </p>
     </div>
   );
 }
