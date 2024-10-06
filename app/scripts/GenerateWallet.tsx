@@ -4,8 +4,9 @@ import { mnemonicToSeedSync } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import { useState, useEffect } from "react";
-import { handleCopy } from '../components/HandleCopy';
+import { handleCopy } from './HandleCopy';
 import pkg from "bs58";
+import CopyButton from "../ui/CopyButton";
 const { encode } = pkg;
 
 export function GenerateWallet({ mnemonic }: { mnemonic: string }) {
@@ -77,42 +78,32 @@ export function GenerateWallet({ mnemonic }: { mnemonic: string }) {
     <>
       <div>
         {mnemonic &&
-          <button onClick={generateSolanaWallet} className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          <button onClick={generateSolanaWallet} className="inline-flex h-12 animate-shimmer items-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:bg-[linear-gradient(110deg,#ffffff,45%,#f0f0f0,55%,#e7e7e7)] dark:text-black">
             Generate a Solana wallet
           </button>
         }
       </div>
 
       <div>
-        <h2>Public Keys with base58</h2>
+        <h1>Public Keys with base58</h1>
         <ul>
           {publicKeys.map((key, index) => (
-            <li key={index}>Wallet{index + 1}  :{key}
-              <button onClick={() => {
+            <li className="dark:text-white" key={index}>Wallet{index + 1}  :{key}
+              <button  onClick={() => {
                 handleCopy(key);
               }} >
-                <span id="default-message" className="bg-slate-400 rounded-md ml-5 inline-flex items-center mb-2 pl-1 pr-1">
-                  <svg className="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                    <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
-                  </svg>
-                  <span className="text-s font-thin">Copy</span>
-                </span>
+                <CopyButton/>
               </button>
             </li>
           ))}
         </ul>
         <ul>
           {privateKeys.map((key, index) => (
-            <li className="text-red-500 blur-lg hover:blur-none" key={index}>Wallet{index + 1}  {key}
+            <li className="text-rose-300 blur-md hover:blur-none" key={index}>Wallet{index + 1}:  {key}
                 <button onClick={() => {
                 handleCopy(key);
               }} >
-                <span id="default-message" className="bg-slate-400 text-white rounded-md ml-5 inline-flex items-center mb-2 pl-1 pr-1">
-                  <svg className="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                    <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
-                  </svg>
-                  <span className="text-s font-thin">Copy</span>
-                </span>
+                <CopyButton/>
               </button>
             </li>
             

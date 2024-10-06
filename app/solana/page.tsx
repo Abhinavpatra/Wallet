@@ -2,9 +2,10 @@
 
 import { generateMnemonic } from "bip39";
 import { useState, useEffect } from "react";
-import { GenerateWallet } from "../components/GenerateWallet";
+import { GenerateWallet } from "../scripts/GenerateWallet";
 import toast, { Toaster } from 'react-hot-toast';
-import { handleCopy } from "../components/HandleCopy";
+import { handleCopy } from "../scripts/HandleCopy";
+import DarkModeSelector from "../scripts/DarkModeSelector";
 
 export default function Home() {
   const [mnemonic, setMnemonic] = useState("");
@@ -26,12 +27,14 @@ export default function Home() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen dark:bg-black ">
+      
+      <DarkModeSelector/> 
       <Toaster position="top-right" />
 
       <div className="flex justify-center">
         <button
-          className="border-yellow-200 bg-slate-500 border-opacity-10 rounded-lg p-3 m-3"
+          className=" text-black border-yellow-200 bg-slate-500 border-opacity-10 rounded-lg p-3 m-3 dark:bg-slate-200"
           onClick={handleGenerateMnemonic}
         >
           Generate {mnemonic && "New"} Seed Phrase
@@ -40,8 +43,8 @@ export default function Home() {
 
       {mnemonic && (
         <div className="mt-4 text-center">
-          <div className="blur-md hover:blur-none mb-2">
-            The seed phrase is: {mnemonic}
+          <div className="blur-md dark:text-white hover:blur-none mb-2">
+            The seed phrase is:   {mnemonic}
           </div>
           <button
             className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
@@ -56,5 +59,6 @@ export default function Home() {
         <GenerateWallet mnemonic={mnemonic} />
       </div>
     </div>
+
   );
 }
