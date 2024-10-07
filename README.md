@@ -1,57 +1,96 @@
+# Wallet 
 
+ This is a sharp and clean af looking wallet generator for solana and ethereum. It is built using Next.js,Shadcn,headlessui,Tailwind and TypeScript, providing a seamless user experience with dark mode support and local storage capabilities.
 
+## Features
 
-# My Wallet Generator App
+- **Wallet Generation**: Easily generate wallets for Solana and Ethereum blockchains.
+- **Mnemonic Phrase**: Generate and store mnemonic phrases securely in local storage.
+- **Dark Mode**: Toggle between light and dark themes based on user preference or system settings.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Local Storage**: Persistently store wallet data on the user's device.
 
-This is a simple wallet generator application built with Next.js, React, and TypeScript. It allows users to generate Solana wallets using a mnemonic seed phrase and view their public and private keys. The application also includes a placeholder page for Ethereum wallets.
+## Technologies Used
 
-## Table of Contents
-
-- [My Wallet Generator App](#my-wallet-generator-app)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Generating a Seed Phrase](#generating-a-seed-phrase)
-    - [Generating Solana Wallets](#generating-solana-wallets)
-  - [License](#license)
+- **Next.js**: A React framework for building fast and user-friendly web applications.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Headless UI**: Unstyled, fully accessible UI components for React.
+- **Lucide Icons**: A collection of simple and beautiful SVG icons.
+- **React Hot Toast**: A library for creating customizable toast notifications.
 
 ## Installation
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/my-wallet-generator-app.git
-    cd my-wallet-generator-app
-    ```
+To get started with the Wallet Generator App, follow these steps:
 
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/wallet-generator-app.git
+   cd wallet-generator-app
+   ```
 
-3. Run the development server:
-    ```bash
-    npm run dev
-    ```
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-4. Open your browser and navigate to `http://localhost:3000`.
+3. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open the App**:
+   Open your browser and navigate to `http://localhost:3000` to view the app.
+
+## File Structure
+
+- **app/page.tsx**: The main entry point for the application, rendering the home page with links to Solana and Ethereum wallet generators.
+- **app/ui/WalletCard.tsx**: A component for displaying wallet details, including public and private keys.
+- **app/ethereum/page.tsx**: The Ethereum wallet generation page, handling mnemonic generation and wallet creation.
+- **app/solana/page.tsx**: The Solana wallet generation page, similar to the Ethereum page but for Solana wallets.
+- **app/scripts/GenerateSolWallet.tsx**: Logic for generating Solana wallets using mnemonic phrases.
+- **app/scripts/GenerateEthWallet.tsx**: Logic for generating Ethereum wallets using mnemonic phrases.
+- **app/scripts/DarkModeSelector.tsx**: A component for selecting and applying the theme (light, dark, or system).
+- **app/providers/ThemeProvider.tsx**: Provides theme context to the application.
+- **app/layout.tsx**: Defines the global layout and includes the theme provider.
+- **app/scripts/HandleCopy.tsx**: Utility function for copying text to the clipboard with toast notifications.
+- **app/scripts/AnimatedText.tsx**: Displays animated text on the home page.
 
 ## Usage
 
-### Generating a Seed Phrase
+1. **Generate a Wallet**:
+   - Navigate to either the Solana or Ethereum page.
+   - Click the "Generate Seed Phrase" button to create a new mnemonic.
+   - Use the "Generate Wallet" button to create a new wallet.
 
-1. Navigate to the Solana page by clicking the "Solana Wallets" button on the home page.
-2. Click the "Generate Seed Phrase" button to generate a new mnemonic seed phrase.
-3. The generated seed phrase will be displayed on the screen. You can copy it by clicking the "Copy Seed Phrase" button.
+2. **Copy Wallet Details**:
+   - Click the "Copy" button next to the public or private key to copy it to the clipboard.
 
-### Generating Solana Wallets
+3. **Toggle Dark Mode**:
+   - Use the theme selector in the top-right corner to switch between light, dark, and system themes.
 
-1. After generating a seed phrase, click the "Generate a Solana wallet" button to generate a new Solana wallet.
-2. The public and private keys of the generated wallet will be displayed on the screen. You can copy them by clicking the "Copy" button next to each key.
+## SEO Optimization
 
+This Wallet Generator App is optimized for search engines with the following strategies:
+
+- **Descriptive Titles and Metadata**: Each page includes descriptive titles and metadata to improve search visibility.
+- **Responsive Design**: Ensures a seamless experience across all devices, which is favored by search engines.
+- **Fast Loading Times**: Built with Next.js for optimized performance and fast loading times.
+- **Accessible Components**: Uses Headless UI for accessible components, improving usability and search rankings.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes. Ensure that your code adheres to the project's coding standards and includes appropriate tests.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-Feel free to customize the `README.md` file further to suit your project's needs.
+## Contact
+
+For questions or feedback, please contact [patraabhinav12@gmail.com](mailto:patraabhinav12@gmail.com).
+
+---
+
+Thank you for using the Wallet Generator App! We hope it meets your cryptocurrency wallet generation needs.
