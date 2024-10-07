@@ -2,7 +2,7 @@
 
 import { generateMnemonic } from "bip39";
 import { useState, useEffect } from "react";
-import { GenerateWallet } from "../scripts/GenerateWallet";
+import { GenerateSolWallet } from "../scripts/GenerateSolWallet";
 import toast, { Toaster } from 'react-hot-toast';
 import { handleCopy } from "../scripts/HandleCopy";
 import DarkModeSelector from "../scripts/DarkModeSelector";
@@ -56,7 +56,7 @@ export default function Home() {
       )}
 
       <div className="mt-6">
-        <GenerateWallet mnemonic={mnemonic} />
+        <GenerateSolWallet mnemonic={mnemonic} />
       </div>
     </div>
 

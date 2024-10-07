@@ -8,7 +8,7 @@ import pkg from "bs58";
 import WalletCard from "../ui/WalletCard";
 const { encode } = pkg;
 
-export function GenerateWallet({ mnemonic }: { mnemonic: string }) {
+export function GenerateSolWallet({ mnemonic }: { mnemonic: string }) {
   const [index, setIndex] = useState(0);
   const [wallets, setWallets] = useState<{ publicKey: string; privateKey: string }[]>([]);
 

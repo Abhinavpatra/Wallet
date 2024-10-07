@@ -26,12 +26,12 @@ export default function WalletCard({ index, publicKey, privateKey }: WalletCardP
 
       <Dialog open={open} onClose={() => setOpen(false)} className="relative z-10">
         <DialogBackdrop
-          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 bg-slate-400 bg-opacity-50 backdrop-blur-sm transition-opacity"
         />
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
-            <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
+            <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-black p-6 text-left align-middle shadow-xl transition-all">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl font-bold leading-6 text-gray-900 dark:text-white">
                   Wallet {index + 1} Details
@@ -71,9 +71,9 @@ interface KeyDisplayProps {
 
 function KeyDisplay({ label, value, isPrivate = false, showPrivateKey = false, togglePrivateKey }: KeyDisplayProps) {
   return (
-    <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-inner">
+    <div className="bg-gray-50 dark:bg-white p-4 rounded-lg shadow-inner">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-medium text-gray-500 dark:text-gray-300">{label}</span>
+        <span className="text-sm font-medium text-gray-500 dark:text-gray-900">{label}</span>
         <div className="flex items-center space-x-2">
           {isPrivate && (
             <button
@@ -85,7 +85,7 @@ function KeyDisplay({ label, value, isPrivate = false, showPrivateKey = false, t
           )}
           <button
             onClick={() => handleCopy(value)}
-            className="flex items-center space-x-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md px-3 py-1 text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-200"
+            className="flex items-center space-x-1 bg-blue-100 dark:bg-slate-300 text-blue-600 dark:text-black rounded-md px-3 py-1 text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-100 transition-colors duration-200"
           >
             <Copy size={16} />
             <span>Copy</span>
