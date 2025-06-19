@@ -93,4 +93,4 @@ For questions or feedback, please contact [patraabhinav12@gmail.com](mailto:patr
 
 ---
 
-Thank you for using the Wallet Generator App! We hope it meets your cryptocurrency wallet generation needs.
+Thank you for using the Wallet Generator App! We hope it meets your cryptocurrency wallet generation needs.w
